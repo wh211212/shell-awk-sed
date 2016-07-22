@@ -1,0 +1,8 @@
+1、统计某个文件中特定字符的个数
+  cat 1.log | awk '{for(i=1;i<=NF;i++)a[$i]++}END{for(j in a) if(j==2) print j,a[j]}'
+
+2、统一某个字符的个数，以a为例
+  awk -F "" '{for(i=1;i<=NF;i++)a[$i]++}END{for(j in a) if(j=="a") print a[j]}' 2.log
+
+3、获取本机的IP地址和掩码
+  ifconfig > ip.txt | cat ip.txt | grep inet | grep -v inet6 | awk '{print  $2 "\t" $4}'
